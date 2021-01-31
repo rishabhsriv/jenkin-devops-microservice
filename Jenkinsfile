@@ -44,11 +44,11 @@ pipeline {
 				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
-		stage('Package'){
-			steps{
-				sh "mvn package -Dskiptests"
-			}
-		}
+		// stage('Package'){
+		// 	steps{
+		// 		sh "mvn package -Dskiptests"
+		// 	}
+		// }
 		stage('Build Docker Image'){
 			//"docker build -t rishabhsriv13/currency-exchange-devops:$env.BUILD_TAG"
 			steps{
