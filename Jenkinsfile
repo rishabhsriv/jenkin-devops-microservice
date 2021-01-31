@@ -13,7 +13,7 @@ pipeline {
 	environment {
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+		PATH = "$dockerHome/bin: $mavenHome/bin:$PATH"
 	}
 	stages{
 		stage('Checkout'){
@@ -31,7 +31,7 @@ pipeline {
 		}
 		stage('Compile'){
 			steps {
-				sh "mvn compile"
+				sh "mvn clean compile"
 			}
 		}
 		stage('Test'){
@@ -46,7 +46,7 @@ pipeline {
 		}
 		stage('Package'){
 			steps{
-				sh "mvn package"
+				sh "mvn package -DskipTests"
 			}
 		}
 		stage('Build Docker Image'){
