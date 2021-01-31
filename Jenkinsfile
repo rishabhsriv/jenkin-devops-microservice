@@ -46,7 +46,7 @@ pipeline {
 		}
 		stage('Package'){
 			steps{
-				sh "mvn clean install spring-boot:package -DskipTests"
+				sh "mvn clean install spring-boot:repackage -DskipTests"
 			}
 		}
 		stage('Build Docker Image'){
